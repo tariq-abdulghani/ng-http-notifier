@@ -3,5 +3,130 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-  }
+    "http-notifier-driver": {
+      "projectType": "application",
+      "schematics": {},
+      "root": "projects/http-notifier-driver",
+      "sourceRoot": "projects/http-notifier-driver/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/http-notifier-driver",
+            "index": "projects/http-notifier-driver/src/index.html",
+            "main": "projects/http-notifier-driver/src/main.ts",
+            "polyfills": "projects/http-notifier-driver/src/polyfills.ts",
+            "tsConfig": "projects/http-notifier-driver/tsconfig.app.json",
+            "assets": [
+              "projects/http-notifier-driver/src/favicon.ico",
+              "projects/http-notifier-driver/src/assets"
+            ],
+            "styles": [
+              "projects/http-notifier-driver/src/styles.css"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ],
+              "fileReplacements": [
+                {
+                  "replace": "projects/http-notifier-driver/src/environments/environment.ts",
+                  "with": "projects/http-notifier-driver/src/environments/environment.prod.ts"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "browserTarget": "http-notifier-driver:build:production"
+            },
+            "development": {
+              "browserTarget": "http-notifier-driver:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "http-notifier-driver:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/http-notifier-driver/src/test.ts",
+            "polyfills": "projects/http-notifier-driver/src/polyfills.ts",
+            "tsConfig": "projects/http-notifier-driver/tsconfig.spec.json",
+            "karmaConfig": "projects/http-notifier-driver/karma.conf.js",
+            "assets": [
+              "projects/http-notifier-driver/src/favicon.ico",
+              "projects/http-notifier-driver/src/assets"
+            ],
+            "styles": [
+              "projects/http-notifier-driver/src/styles.css"
+            ],
+            "scripts": []
+          }
+        }
+      }
+    },
+    "ng-http-notifier": {
+      "projectType": "library",
+      "root": "projects/ng-http-notifier",
+      "sourceRoot": "projects/ng-http-notifier/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/ng-http-notifier/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/ng-http-notifier/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/ng-http-notifier/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/ng-http-notifier/src/test.ts",
+            "tsConfig": "projects/ng-http-notifier/tsconfig.spec.json",
+            "karmaConfig": "projects/ng-http-notifier/karma.conf.js"
+          }
+        }
+      }
+    }
+ 
 }
