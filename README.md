@@ -1,4 +1,34 @@
 # HttpNotifier
+Library for handeling Http reponse .
+Project Goals:
+1. configurable Notification messages per(uri, method, status)
+	can use server response
+	each notification has 4 basic Severity levels
+	- info
+	- success
+	- warning
+	- error
+
+2. Plugable Toastr providers
+	if any advanced Toastr exists
+	it can be used and also can be configured
+
+
+3. ui consistency 
+    if you are using ui libraries like prime - boot strap- material that has their own toastr
+    just just provide `ToastrService`  implementation  that uses the toolkit toastr.
+
+4. for i18n
+    just provide Toastr that implements NotifierToastr interface that has translation cabability
+
+3. Has Default Impel(provider)
+    its not good and not recommended its alert `alret()`.
+    just use your favorite toastr library or what matches UI
+    library you use ex angular material, primeng
+
+
+------------------------------------------------------------------------------------------------------
+
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.2.10.
 
